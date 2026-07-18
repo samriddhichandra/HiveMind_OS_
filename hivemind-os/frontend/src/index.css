@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Default dark theme variables on :root */
+:root {
+  color-scheme: dark;
+  --bg-void: #05070a;
+  --bg-deep: #070b10;
+  --panel: rgba(13, 19, 27, 0.62);
+  --panel-solid: #0b1119;
+  --border-soft: rgba(148, 178, 200, 0.11);
+  --border-med: rgba(148, 178, 200, 0.2);
+  --cyan: #22e0ee;
+  --cyan-dim: rgba(34, 224, 238, 0.35);
+  --emerald: #34e3a1;
+  --emerald-dim: rgba(52, 227, 161, 0.32);
+  --rose: #fb6f8c;
+  --rose-dim: rgba(251, 111, 140, 0.35);
+  --amber: #f5c15b;
+  --amber-dim: rgba(245, 193, 91, 0.32);
+  --ink-100: #eaf1f6;
+  --ink-300: #9fb2c2;
+  --ink-500: #5c6f80;
+  --font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-void);
+}
+
+.hm-root {
+  font-family: var(--font-family);
+}
+
+/* Light Theme - overrides :root variables when .light-theme is on html element */
+.light-theme {
+  color-scheme: light;
+  --bg-void: #ffffff;
+  --bg-deep: #fefefe;
+  --panel: rgba(245, 245, 240, 0.85);
+  --panel-solid: #f8f8f5;
+  --border-soft: rgba(200, 180, 100, 0.25);
+  --border-med: rgba(200, 180, 100, 0.4);
+  --cyan: #0ea5e9;
+  --cyan-dim: rgba(14, 165, 233, 0.25);
+  --emerald: #10b981;
+  --emerald-dim: rgba(16, 185, 129, 0.25);
+  --rose: #f43f5e;
+  --rose-dim: rgba(244, 63, 94, 0.25);
+  --amber: #f59e0b;
+  --amber-dim: rgba(245, 158, 11, 0.25);
+  --ink-100: #1e293b;
+  --ink-300: #64748b;
+  --ink-500: #94a3b8;
+}
+
+.light-theme body {
+  background: #ffffff;
+}
+
+.light-theme .hm-noise-grid {
+  background-image: linear-gradient(rgba(200, 180, 100, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 180, 100, 0.08) 1px, transparent 1px);
+}
+
+.hm-mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.hm-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.hm-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.hm-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(148, 178, 200, 0.18);
+  border-radius: 4px;
+}
+.hm-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 178, 200, 0.3);
+}
+
+/* Light theme scrollbar */
+.light-theme .hm-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(148, 160, 100, 0.25);
+}
+.light-theme .hm-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 160, 100, 0.4);
+}
+
+@keyframes hm-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+@keyframes hm-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes hm-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-1.4px);
+  }
+  75% {
+    transform: translateX(1.4px);
+  }
+}
+@keyframes hm-glow-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(4px);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9) translateY(-4px);
+  }
+}
+
+.hm-node-breathe {
+  animation: hm-breathe 2.8s ease-in-out infinite;
+}
+.hm-log-enter {
+  animation: hm-rise 0.28s ease-out;
+}
+.hm-shake {
+  animation: hm-shake 0.32s ease-in-out infinite;
+}
+.hm-badge-pop {
+  animation: hm-glow-pop 2.4s ease-in-out infinite;
+}
+
+.hm-noise-grid {
+  background-image: linear-gradient(rgba(148, 178, 200, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 178, 200, 0.05) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.hm-switch-track {
+  transition: background-color 220ms ease, box-shadow 220ms ease;
+}
+.hm-switch-thumb {
+  transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
