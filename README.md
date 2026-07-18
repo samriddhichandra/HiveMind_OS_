@@ -160,19 +160,18 @@ HiveMind OS simulates a distributed multi-agent system where:
 
 ## Demo
 
-<div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
-  <div style="text-align: center;">
-    <img src="public/Screenshot 2026-07-18 212109.png" alt="Demo 1" width="250" style="border: 1px solid #ddd; border-radius: 8px;"/>
-    <p style="font-size: 12px; color: #666; margin-top: 5px;">Main Dashboard View</p>
-  </div>
-  <div style="text-align: center;">
-    <img src="public/Screenshot 2026-07-18 212142.png" alt="Demo 2" width="250" style="border: 1px solid #ddd; border-radius: 8px;"/>
-    <p style="font-size: 12px; color: #666; margin-top: 5px;">Architecture Graph</p>
-  </div>
-  <div style="text-align: center;">
-    <img src="public/Screenshot 2026-07-18 212429.png" alt="Demo 3" width="250" style="border: 1px solid #ddd; border-radius: 8px;"/>
-    <p style="font-size: 12px; color: #666; margin-top: 5px;">Chaos Controls</p>
-  </div>
+<div align="center">
+
+<img src="public/Screenshot 2026-07-18 212109.png" width="700" style="border-radius:12px;"/>
+
+<br><br>
+
+<img src="public/Screenshot 2026-07-18 212142.png" width="700" style="border-radius:12px;"/>
+
+<br><br>
+
+<img src="public/Screenshot 2026-07-18 212429.png" width="700" style="border-radius:12px;"/>
+
 </div>
 
 ## Prerequisites
