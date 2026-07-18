@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HiveMind OS</title>
+    <script>
+      // Set theme class on html element before React loads to prevent flash
+      (function() {
+        const saved = localStorage.getItem("theme");
+        const theme = saved || "dark";
+        if (theme === "light") {
+          document.documentElement.classList.add("light-theme");
+        } else {
+          document.documentElement.classList.add("dark-theme");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
