@@ -13,6 +13,7 @@ A real-time distributed swarm control plane that demonstrates multi-agent system
 - [Overview](#overview)
 - [Architecture](#architecture)
 - [Features](#features)
+- [Demo](#demo)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -157,13 +158,30 @@ HiveMind OS simulates a distributed multi-agent system where:
 - ✅ **Interactive Graph** - SVG architecture visualization with pulse animations
 - ✅ **Event Stream** - Terminal-style log display with color-coded levels
 
+## Demo
+
+<div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+  <div style="text-align: center;">
+    <img src="public/Screenshot 2026-07-18 212109.png" alt="Demo 1" width="250" style="border: 1px solid #ddd; border-radius: 8px;"/>
+    <p style="font-size: 12px; color: #666; margin-top: 5px;">Main Dashboard View</p>
+  </div>
+  <div style="text-align: center;">
+    <img src="public/Screenshot 2026-07-18 212142.png" alt="Demo 2" width="250" style="border: 1px solid #ddd; border-radius: 8px;"/>
+    <p style="font-size: 12px; color: #666; margin-top: 5px;">Architecture Graph</p>
+  </div>
+  <div style="text-align: center;">
+    <img src="public/Screenshot 2026-07-18 212429.png" alt="Demo 3" width="250" style="border: 1px solid #ddd; border-radius: 8px;"/>
+    <p style="font-size: 12px; color: #666; margin-top: 5px;">Chaos Controls</p>
+  </div>
+</div>
+
 ## Prerequisites
 
-| Requirement | Version | Purpose |
-|-------------|---------|---------|
-| Python | 3.10+ | Backend runtime |
-| Node.js | 18+ | Frontend build & runtime |
-| Ollama | Latest | Local LLM inference (optional) |
+| Requirement | Version | Purpose                        |
+| ----------- | ------- | ------------------------------ |
+| Python      | 3.10+   | Backend runtime                |
+| Node.js     | 18+     | Frontend build & runtime       |
+| Ollama      | Latest  | Local LLM inference (optional) |
 
 ## Installation
 
@@ -228,6 +246,7 @@ curl http://localhost:11434/api/tags
 **Connect:** `ws://localhost:8000/ws/simulate`
 
 **Request:**
+
 ```json
 {
   "task": "Design a scalable URL shortener",
@@ -237,28 +256,28 @@ curl http://localhost:11434/api/tags
 
 **Response Events:**
 
-| Event | Description |
-|-------|-------------|
-| `SESSION_START` | Simulation begins |
-| `LOOP_START` | New workflow iteration |
-| `PLANNING` | Orchestrator breaking down task |
-| `THINKING` | LLM processing |
-| `HIT/MISS` | Cache lookup result |
-| `RAG_FETCH` | Vector DB query |
-| `WORKING` | Worker processing subtask |
-| `REVIEWING` | Reviewer validation |
-| `APPROVED/REJECTED` | Review result |
-| `COMPLETE` | Workflow finished |
-| `SESSION_END` | Simulation complete |
+| Event                 | Description                     |
+| --------------------- | ------------------------------- |
+| `SESSION_START`     | Simulation begins               |
+| `LOOP_START`        | New workflow iteration          |
+| `PLANNING`          | Orchestrator breaking down task |
+| `THINKING`          | LLM processing                  |
+| `HIT/MISS`          | Cache lookup result             |
+| `RAG_FETCH`         | Vector DB query                 |
+| `WORKING`           | Worker processing subtask       |
+| `REVIEWING`         | Reviewer validation             |
+| `APPROVED/REJECTED` | Review result                   |
+| `COMPLETE`          | Workflow finished               |
+| `SESSION_END`       | Simulation complete             |
 
 ### HTTP Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/trigger-rate-limit` | Simulate 429 rate limiting |
-| POST | `/fail-llm` | Simulate LLM outage |
-| POST | `/reset-chaos` | Reset all chaos state |
-| GET | `/chaos-status` | Get current chaos state |
+| Method | Endpoint                | Description                |
+| ------ | ----------------------- | -------------------------- |
+| POST   | `/trigger-rate-limit` | Simulate 429 rate limiting |
+| POST   | `/fail-llm`           | Simulate LLM outage        |
+| POST   | `/reset-chaos`        | Reset all chaos state      |
+| GET    | `/chaos-status`       | Get current chaos state    |
 
 #### Trigger Rate Limit
 
@@ -292,19 +311,19 @@ Clears all chaos flags and resets the circuit breaker.
 
 ### Environment Variables
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `OLLAMA_MODEL` | `llama3` | LLM model to use |
-| `PORT` | `8000` | Backend server port |
+| Variable         | Default    | Description         |
+| ---------------- | ---------- | ------------------- |
+| `OLLAMA_MODEL` | `llama3` | LLM model to use    |
+| `PORT`         | `8000`   | Backend server port |
 
 ### Chaos Parameters
 
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| Rate limit duration | 10s | Configurable via request body |
-| LLM outage duration | 10s | Configurable via request body |
+| Parameter                 | Default    | Description                   |
+| ------------------------- | ---------- | ----------------------------- |
+| Rate limit duration       | 10s        | Configurable via request body |
+| LLM outage duration       | 10s        | Configurable via request body |
 | Circuit breaker threshold | 2 failures | Trips after repeated failures |
-| Circuit breaker cooldown | 15s | Time before allowing retry |
+| Circuit breaker cooldown  | 15s        | Time before allowing retry    |
 
 ## Development
 
@@ -342,6 +361,7 @@ multiagent_sim/
 ### Available Scripts
 
 **Frontend:**
+
 ```bash
 npm run dev      # Start development server
 npm run build    # Build for production
@@ -349,6 +369,7 @@ npm run preview  # Preview production build
 ```
 
 **Backend:**
+
 ```bash
 python main.py   # Start FastAPI server
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload  # Alternative start
@@ -369,20 +390,24 @@ cd Backend && python test_client.py "Design a scalable chat notification system"
 ### Common Issues
 
 **WebSocket connection failed:**
+
 - Ensure backend is running on port 8000
 - Check CORS configuration in vite.config.js
 - Verify no firewall is blocking the connection
 
 **LLM calls failing:**
+
 - Install Ollama: `curl -fsSL https://ollama.com/install.sh | sh`
 - Pull a model: `ollama pull llama3`
 - The system will use fallback breakdown if Ollama is unavailable
 
 **Frontend not loading:**
+
 - Check Node.js version (requires 18+)
 - Clear node_modules and reinstall: `rm -rf node_modules && npm install`
 
 **Rate limiting not working:**
+
 - Ensure the simulation has `loops > 1` to observe chaos effects
 - Check the chaos status endpoint: `curl http://localhost:8000/chaos-status`
 
